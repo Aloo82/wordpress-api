@@ -1,0 +1,6 @@
+{
+    "name": "aloo/wordpress-core",
+    "description": "Abstraction Layer for wordpress",
+    "type": "library",
+    "require": {}
+}
