@@ -2,5 +2,9 @@
     "name": "aloo/wordpress-core",
     "description": "Abstraction Layer for wordpress",
     "type": "library",
-    "require": {}
+    "autoload": {
+        "psr-4": {
+            "Aloo\\WordPress\\Core\\": "src/"
+        }
+    }
 }
