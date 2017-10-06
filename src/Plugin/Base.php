@@ -37,15 +37,15 @@ abstract class Base implements iPlugin
             /*
             * Set directory
             */
-            $this->directory = $directory;
+            $this->_directory = $directory;
         }
-        return $this->directory;
+        return $this->_directory;
     }
     /**
      * Get/Set URL
      *
      * @param string $url
-     * @return void
+     * @return string
      */
     public function url($url = null)
     {
@@ -53,8 +53,8 @@ abstract class Base implements iPlugin
             /*
             * Set URL
             */
-            $this->url = $url;
+            $this->_url = $url;
         }
-        return $this->url;
+        return $this->_url;
     }
 }

@@ -88,4 +88,17 @@ class Option
     public function add_option( $option, $value = '', $deprecated = '', $autoload = 'yes' ) {
         return add_option($option, $value, $deprecated, $autoload);
     }
+    /**
+     * Removes option by name. Prevents removal of protected WordPress options.
+     *
+     * @since 1.2.0
+     *
+     * @global wpdb $wpdb WordPress database abstraction object.
+     *
+     * @param string $option Name of option to remove. Expected to not be SQL-escaped.
+     * @return bool True, if option is successfully deleted. False on failure.
+     */
+    function delete_option( $option ) {
+        return delete_option($option);
+    }
 }
