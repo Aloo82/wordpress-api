@@ -19,7 +19,8 @@ class Link
      * @param bool        $leavename Optional. Whether to keep post name or page name. Default false.
      * @return string|false The permalink URL or false if post does not exist.
      */
-    public function get_permalink( $post = 0, $leavename = false ) {
+    public function get_permalink($post = 0, $leavename = false)
+    {
         return get_permalink($post, $leavename);
     }
     /**
@@ -36,7 +37,8 @@ class Link
      *                        Typically this is done by passing `__FILE__` as the argument.
      * @return string Plugins URL link with optional paths appended.
      */
-    function plugins_url( $path = '', $plugin = '' ) {
+    function plugins_url($path = '', $plugin = '')
+    {
         return plugins_url($path, $plugin);
     }
 }

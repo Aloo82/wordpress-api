@@ -23,7 +23,8 @@ class Rewrite
      * @param string $url Permalink to check.
      * @return int Post ID, or 0 on failure.
      */
-    public function url_to_postid( $url ) {
+    public function url_to_postid($url)
+    {
         return url_to_postid($url);
     }
 }

@@ -74,7 +74,8 @@ class Plugin
      * @param int      $accepted_args   Optional. The number of arguments the function accepts. Default 1.
      * @return true
      */
-    function add_filter( $tag, $function_to_add, $priority = 10, $accepted_args = 1 ) {
+    function add_filter($tag, $function_to_add, $priority = 10, $accepted_args = 1)
+    {
         return add_filter($tag, $function_to_add, $priority, $accepted_args);
     }
     /**
@@ -112,7 +113,8 @@ class Plugin
      * @param mixed  $var,... Additional variables passed to the functions hooked to `$tag`.
      * @return mixed The filtered value after all hooked functions are applied to it.
      */
-    public function apply_filters( $tag, $value ) {
+    public function apply_filters($tag, $value)
+    {
         return call_user_func_array("apply_filters", func_get_args());
     }
     /**
@@ -135,7 +137,8 @@ class Plugin
      * @param int      $accepted_args   Optional. The number of arguments the function accepts. Default 1.
      * @return true Will always return true.
      */
-    public function add_action($tag, $function_to_add, $priority = 10, $accepted_args = 1) {
+    public function add_action($tag, $function_to_add, $priority = 10, $accepted_args = 1)
+    {
         return add_action($tag, $function_to_add, $priority, $accepted_args);
     }
     /**
@@ -157,7 +160,8 @@ class Plugin
      * @param mixed  $arg,... Optional. Additional arguments which are passed on to the
      *                        functions hooked to the action. Default empty.
      */
-    function do_action($tag, $arg = '') {
+    function do_action($tag, $arg = '')
+    {
         return call_user_func_array('do_action', func_get_args());
     }
     /**
@@ -188,7 +192,8 @@ class Plugin
      * @param int      $position   The position in the menu order this one should appear.
      * @return string The resulting page's hook_suffix.
      */
-    function add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function = '', $icon_url = '', $position = null ) {
+    function add_menu_page($page_title, $menu_title, $capability, $menu_slug, $function = '', $icon_url = '', $position = null)
+    {
         return \add_menu_page($page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position);
     }
     /**
@@ -237,7 +242,8 @@ class Plugin
     * @param string   $file     The filename of the plugin including the path.
     * @param callable $function The function hooked to the 'activate_PLUGIN' action.
     */
-    public function register_activation_hook($file, $function) {
+    public function register_activation_hook($file, $function)
+    {
         register_activation_hook($file, $function);
     }
     /**
@@ -258,7 +264,8 @@ class Plugin
     * @param string   $file     The filename of the plugin including the path.
     * @param callable $function The function hooked to the 'deactivate_PLUGIN' action.
     */
-    public function register_deactivation_hook($file, $function) {
+    public function register_deactivation_hook($file, $function)
+    {
         register_deactivation_hook($file, $function);
     }
 }

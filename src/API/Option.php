@@ -31,7 +31,8 @@ class Option
      * @param mixed  $default Optional. Default value to return if the option does not exist.
      * @return mixed Value set for the option.
      */
-    public function get_option( $option, $default = false ) {
+    public function get_option($option, $default = false)
+    {
         return get_option($option, $default);
     }
 
@@ -58,7 +59,8 @@ class Option
      *                              the default value is 'yes'. Default null.
      * @return bool False if value was not updated and true if value was updated.
      */
-    public function update_option( $option, $value, $autoload = null ) {
+    public function update_option($option, $value, $autoload = null)
+    {
         return update_option($option, $value, $autoload);
     }
 
@@ -85,7 +87,8 @@ class Option
      *                                    Default is enabled. Accepts 'no' to disable for legacy reasons.
      * @return bool False if option was not added and true if option was added.
      */
-    public function add_option( $option, $value = '', $deprecated = '', $autoload = 'yes' ) {
+    public function add_option($option, $value = '', $deprecated = '', $autoload = 'yes')
+    {
         return add_option($option, $value, $deprecated, $autoload);
     }
     /**
@@ -98,7 +101,8 @@ class Option
      * @param string $option Name of option to remove. Expected to not be SQL-escaped.
      * @return bool True, if option is successfully deleted. False on failure.
      */
-    function delete_option( $option ) {
+    function delete_option($option)
+    {
         return delete_option($option);
     }
 }

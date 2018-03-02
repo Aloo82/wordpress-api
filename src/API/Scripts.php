@@ -63,5 +63,4 @@ class Scripts
     {
         wp_enqueue_script($handle, $src, $deps, $ver, $in_footer);
     }
-
 }

@@ -3,7 +3,7 @@ namespace Aloo\WordPress\Core\Plugin;
 
 use \Aloo\WordPress\Core\API;
 
-class Loader 
+class Loader
 {
     private $activator;
     private $plugin;

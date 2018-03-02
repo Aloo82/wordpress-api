@@ -22,7 +22,8 @@ class Load
      *
      * @return bool True if inside WordPress administration interface, false otherwise.
      */
-    function is_admin() {
+    function is_admin()
+    {
         return is_admin();
     }
 }

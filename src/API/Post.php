@@ -22,13 +22,15 @@ class Post
      * @param int|WP_Post $post Optional. Post ID or post object. Default is global $post.
      * @return string
      */
-    public function get_the_guid( $post = 0 ) {
+    public function get_the_guid($post = 0)
+    {
         return get_the_guid($post);
     }
 
-    public function get_post_by_guid($guid) {
+    public function get_post_by_guid($guid)
+    {
         global $wpdb;
-        return $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE guid='%s'", $guid) );
+        return $wpdb->get_var($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s'", $guid));
     }
 
     /**
@@ -41,7 +43,8 @@ class Post
      * @param int $post_id Optional. Attachment ID. Default 0.
      * @return string|false Attachment URL, otherwise false.
      */
-    public function wp_get_attachment_url( $post_id = 0 ) {
+    public function wp_get_attachment_url($post_id = 0)
+    {
         return wp_get_attachment_url($post_id);
     }
     /**
@@ -56,8 +59,9 @@ class Post
      * @param int|WP_Post $post Optional. Post ID or WP_Post object. Default is global $post.
      * @return string
      */
-    function get_the_title( $post = 0 ) {
-        return get_the_title( $post );
+    function get_the_title($post = 0)
+    {
+        return get_the_title($post);
     }
     /**
      * Retrieves post data given a post ID or post object.
@@ -77,7 +81,8 @@ class Post
      * @return WP_Post|array|null Type corresponding to $output on success or null on failure.
      *                            When $output is OBJECT, a `WP_Post` instance is returned.
      */
-    function get_post( $post = null, $output = OBJECT, $filter = 'raw' ) {
+    function get_post($post = null, $output = OBJECT, $filter = 'raw')
+    {
         return get_post($post, $output, $filter);
     }
 }
