@@ -1,10 +1,10 @@
 <?php
-namespace Aloo\WordPress\Core\Plugin;
+namespace Aloo\WordPress\Plugin;
 
-interface iPlugin
+interface PluginInterface
 {
     public function directory($directory = null);
     public function url($url = null);
     public function version();
-    public function run();
+    public function start();
 }

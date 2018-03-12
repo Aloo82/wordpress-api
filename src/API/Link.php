@@ -6,10 +6,11 @@
  * Time: 21:50
  */
 
-namespace Aloo\WordPress\Core\API;
+namespace Aloo\WordPress\API;
 
 class Link
 {
+    // phpcs:disable
     /**
      * Retrieves the full permalink for the current post or post ID.
      *

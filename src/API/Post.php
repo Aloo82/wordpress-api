@@ -6,10 +6,11 @@
  * Time: 22:36
  */
 
-namespace Aloo\WordPress\Core\API;
+namespace Aloo\WordPress\API;
 
 class Post
 {
+    // phpcs:disable
     /**
      * Retrieve the Post Global Unique Identifier (guid).
      *

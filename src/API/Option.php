@@ -6,10 +6,11 @@
  * Time: 00:17
  */
 
-namespace Aloo\WordPress\Core\API;
+namespace Aloo\WordPress\API;
 
 class Option
 {
+    // phpcs:disable
     /**
      * Retrieves an option value based on an option name.
      *

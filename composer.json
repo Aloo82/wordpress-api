@@ -4,7 +4,10 @@
     "type": "library",
     "autoload": {
         "psr-4": {
-            "Aloo\\WordPress\\Core\\": "src/"
+            "Aloo\\WordPress\\": "src/"
         }
+    },
+    "require": {
+        "monolog/monolog": "^1.23"
     }
 }

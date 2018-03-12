@@ -6,10 +6,15 @@
  * Time: 16:09
  */
 
-namespace Aloo\WordPress\Core\API;
+namespace Aloo\WordPress\API;
 
-class Plugin
+use \Aloo\WordPress;
+
+class Plugin implements WordPress\LoggingTraitInterface
 {
+    use WordPress\LoggingTrait;
+
+    // phpcs:disable
     /**
      * Hook a function or method to a specific filter action.
      *
@@ -76,6 +81,9 @@ class Plugin
      */
     function add_filter($tag, $function_to_add, $priority = 10, $accepted_args = 1)
     {
+        // phpcs:enable
+        $this->getLogger()->debug("Adding WordPress Filter", ["tag" => $tag]);
+        // phpcs:disable
         return add_filter($tag, $function_to_add, $priority, $accepted_args);
     }
     /**
@@ -115,6 +123,9 @@ class Plugin
      */
     public function apply_filters($tag, $value)
     {
+        // phpcs:enable
+        // $this->getLogger()->debug("Applying WordPress Filters", \func_get_args());
+        // phpcs:disable
         return call_user_func_array("apply_filters", func_get_args());
     }
     /**
@@ -139,6 +150,9 @@ class Plugin
      */
     public function add_action($tag, $function_to_add, $priority = 10, $accepted_args = 1)
     {
+        // phpcs:enable
+        $this->getLogger()->debug("Adding WordPress Action", ["tag" => $tag]);
+        // phpcs:disable
         return add_action($tag, $function_to_add, $priority, $accepted_args);
     }
     /**
@@ -162,6 +176,9 @@ class Plugin
      */
     function do_action($tag, $arg = '')
     {
+        // phpcs:enable
+        $this->getLogger()->debug("Doing WordPress Action", ["tag" => $tag]);
+        // phpcs:disable
         return call_user_func_array('do_action', func_get_args());
     }
     /**
@@ -244,6 +261,9 @@ class Plugin
     */
     public function register_activation_hook($file, $function)
     {
+        // phpcs:enable
+        $this->getLogger()->debug("Registering WordPress Activation Hook", ["file" => $file]);
+        // phpcs:disable
         register_activation_hook($file, $function);
     }
     /**
@@ -266,6 +286,9 @@ class Plugin
     */
     public function register_deactivation_hook($file, $function)
     {
+        // phpcs:enable
+        $this->getLogger()->debug("Registering WordPress Deactivation Hook", ["file" => $file]);
+        // phpcs:disable
         register_deactivation_hook($file, $function);
     }
 }

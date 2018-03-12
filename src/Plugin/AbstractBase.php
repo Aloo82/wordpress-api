@@ -1,30 +1,20 @@
 <?php
-namespace Aloo\WordPress\Core\Plugin;
+namespace Aloo\WordPress\Plugin;
 
-abstract class Base implements iPlugin
+abstract class AbstractBase implements PluginInterface
 {
-    const VERSION = '0.0.0';
     /**
      * Plugin directory
      *
      * @var string
      */
-    private $_directory;
+    private $plugin_directory;
     /**
      * Plugin URL
      *
      * @var string
      */
-    private $_url;
-    /**
-     * Get plugin version
-     *
-     * @return string
-     */
-    public function version()
-    {
-        return $this::VERSION;
-    }
+    private $plugin_url;
     /**
      * Get/Set directory
      *
@@ -37,9 +27,9 @@ abstract class Base implements iPlugin
             /*
             * Set directory
             */
-            $this->_directory = $directory;
+            $this->plugin_directory = $directory;
         }
-        return $this->_directory;
+        return $this->plugin_directory;
     }
     /**
      * Get/Set URL
@@ -53,8 +43,8 @@ abstract class Base implements iPlugin
             /*
             * Set URL
             */
-            $this->_url = $url;
+            $this->plugin_url = $url;
         }
-        return $this->_url;
+        return $this->plugin_url;
     }
 }

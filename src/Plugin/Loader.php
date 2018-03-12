@@ -1,53 +1,74 @@
 <?php
-namespace Aloo\WordPress\Core\Plugin;
+namespace Aloo\WordPress\Plugin;
 
-use \Aloo\WordPress\Core\API;
+use \Aloo\WordPress;
+use \Aloo\WordPress\API;
 
-class Loader
+class Loader implements WordPress\LoggingTraitInterface
 {
+    use WordPress\LoggingTrait {
+        setLogger as protected traitLogger;
+    }
+    
     private $activator;
     private $plugin;
     private $plugin_file;
     private $plugin_directory;
     private $plugin_url;
+    
+    public $link_api;
+    public $plugin_api;
 
-    public function __construct($file_path, iPlugin $plugin, iActivator $activator = null)
+    public function __construct($file_path, PluginInterface $plugin, ActivatorInterface $activator = null)
     {
-        $this->plugin = $plugin;
         $this->plugin_file = $file_path;
-        $this->plugin_directory = \dirname($this->plugin_file);
+        $this->plugin = $plugin;
         $this->activator = $activator;
-        /*
-        * Determine plugin URL
-        */
-        $api = new API\Link();
-        $this->plugin_url = $api->plugins_url(\basename($this->plugin_directory));
+        $this->link_api = new API\Link();
+        $this->plugin_api = new API\Plugin();
     }
 
-    public function run()
+    public function setLogger(WordPress\Logger $logger)
     {
-        $api = new API\Plugin();
+        $this->traitLogger($logger);
+        if ($this->plugin_api instanceof WordPress\LoggingTraitInterface) {
+            $this->plugin_api->setLogger($logger);
+        }
+    }
+
+    public function load()
+    {
         /*
         * Register activation & deactivation hooks
         */
-        if ($this->activator instanceof iActivator) {
-            $api->register_activation_hook($this->plugin_file, [$this->activator, iActivator::METHOD_ACTIVATE]);
-            $api->register_deactivation_hook($this->plugin_file, [$this->activator, iActivator::METHOD_DEACTIVATE]);
+        if ($this->activator instanceof ActivatorInterface) {
+            $this->plugin_api->register_activation_hook(
+                $this->plugin_file,
+                [$this->activator, ActivatorInterface::METHOD_ACTIVATE]
+            );
+            $this->plugin_api->register_deactivation_hook(
+                $this->plugin_file,
+                [$this->activator, ActivatorInterface::METHOD_DEACTIVATE]
+            );
         }
         /*
         * Configure plugin
         */
-        $this->plugin->directory($this->plugin_directory);
-        $this->plugin->url($this->plugin_url);
+        $this->plugin->directory($this->getPluginDirectory());
+        $this->plugin->url($this->getPluginUrl());
         /*
         * Run plugin
         */
-        $this->plugin->run();
+        $this->plugin->start();
     }
 
-    public static function load($file_path, iPlugin $plugin, iActivator $activator)
+    private function getPluginDirectory()
     {
-        $loader = new Loader($file_path, $plugin, $activator);
-        $loader->run();
+        return \dirname($this->plugin_file);
+    }
+
+    private function getPluginUrl()
+    {
+        return $this->link_api->plugins_url($this->getPluginDirectory());
     }
 }

@@ -6,10 +6,11 @@
  * Time: 16:23
  */
 
-namespace Aloo\WordPress\Core\API;
+namespace Aloo\WordPress\API;
 
 class Scripts
 {
+    // phpcs:disable
     /**
      * Register a new script.
      *

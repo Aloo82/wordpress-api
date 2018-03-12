@@ -1,7 +1,7 @@
 <?php
-namespace Aloo\WordPress\Core\Plugin;
+namespace Aloo\WordPress\Plugin;
 
-interface iActivator
+interface ActivatorInterface
 {
     const METHOD_ACTIVATE = 'activate';
     const METHOD_DEACTIVATE = 'deactivate';

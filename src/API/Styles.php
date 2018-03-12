@@ -6,10 +6,11 @@
  * Time: 16:25
  */
 
-namespace Aloo\WordPress\Core\API;
+namespace Aloo\WordPress\API;
 
 class Styles
 {
+    // phpcs:disable
     /**
      * Register a CSS stylesheet.
      *

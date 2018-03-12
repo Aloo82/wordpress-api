@@ -6,10 +6,11 @@
  * Time: 21:50
  */
 
-namespace Aloo\WordPress\Core\API;
+namespace Aloo\WordPress\API;
 
 class Load
 {
+    // phpcs:disable
     /**
      * Whether the current request is for an administrative interface page.
      *

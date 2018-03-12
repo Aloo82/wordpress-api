@@ -6,10 +6,11 @@
  * Time: 09:59
  */
 
-namespace Aloo\WordPress\Core\API;
+namespace Aloo\WordPress\API;
 
 class Rewrite
 {
+    // phpcs:disable
     /**
      * Examine a URL and try to determine the post ID it represents.
      *

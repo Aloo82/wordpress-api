@@ -1,5 +1,5 @@
 <?php
-namespace Aloo\WordPress\Core\API\Plugin;
+namespace Aloo\WordPress\API\Plugin;
 
 class Action
 {
