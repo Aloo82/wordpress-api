@@ -17,4 +17,12 @@ trait APITrait
     {
         $this->wordPressAPI = $wordPressAPI;
     }
+
+    public function WP(API $wordPressAPI = null) : API
+    {
+        if (!is_null($wordPressAPI)) {
+            $this->setWordPressAPI($wordPressAPI);
+        }
+        return $this->getWordPressAPI();
+    }
 }

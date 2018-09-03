@@ -4,12 +4,8 @@ namespace Aloo\WordPress\Plugin;
 use \Aloo\WordPress;
 use \Aloo\WordPress\API;
 
-class Loader implements WordPress\LoggingTraitInterface
+class Loader
 {
-    use WordPress\LoggingTrait {
-        setLogger as protected traitLogger;
-    }
-    
     private $activator;
     private $plugin;
     private $plugin_file;
@@ -26,14 +22,7 @@ class Loader implements WordPress\LoggingTraitInterface
         $this->activator = $activator;
         $this->link_api = new API\Link();
         $this->plugin_api = new API\Plugin();
-    }
-
-    public function setLogger(WordPress\Logger $logger)
-    {
-        $this->traitLogger($logger);
-        if ($this->plugin_api instanceof WordPress\LoggingTraitInterface) {
-            $this->plugin_api->setLogger($logger);
-        }
+        $this->plugin_api->setLogger($plugin->getLogger());
     }
 
     public function load()
